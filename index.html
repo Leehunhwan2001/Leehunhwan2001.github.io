@@ -16,7 +16,7 @@
         <label for="genre">장르:</label>
         <input type="text" id="genre" placeholder="장르">
         <br>
-        <label for "review">한줄평:</label>
+        <label for="review">한줄평:</label>
         <input type="text" id="review" placeholder="한줄평">
         <br>
         <button id="add-movie" onclick="location.href='add.html'">영화 추가</button>
@@ -41,10 +41,12 @@
     <script>
         var movieCounter = 1;
 
-        document.getElementById("add-movie").addEventListener("click", function () {
-            var movieName = document.getElementById("movie-name").value;
-            var genre = document.getElementById("genre").value;
-            var review = document.getElementById("review").value;
+        // 쿼리 매개변수에서 데이터 읽기
+        function getQueryParams() {
+            var params = new URLSearchParams(window.location.search);
+            var movieName = params.get("movieName");
+            var genre = params.get("genre");
+            var review = params.get("review");
 
             if (movieName && genre && review) {
                 var table = document.querySelector(".table tbody");
@@ -64,14 +66,14 @@
 
                 movieCounter++;
 
-                // 입력 폼을 초기화합니다.
-                document.getElementById("movie-name").value = "";
-                document.getElementById("genre").value = "";
-                document.getElementById("review").value = "";
-            } else {
-                alert("영화 이름, 장르, 한줄평을 모두 입력하세요.");
+                // URL에서 쿼리 매개변수 삭제 (옵션)
+                var newUrl = window.location.href.substring(0, window.location.href.indexOf("?"));
+                window.history.replaceState({}, document.title, newUrl);
             }
-        });
+        }
+
+        // 페이지 로드 시 쿼리 매개변수 확인
+        window.onload = getQueryParams;
 
         function deleteMovie(button) {
             if (confirm("영화를 삭제하시겠습니까?")) {
@@ -80,6 +82,4 @@
             }
         }
     </script>
-</body>
-
-</html>
+</body
