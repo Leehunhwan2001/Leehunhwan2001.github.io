@@ -41,39 +41,24 @@
     <script>
         var movieCounter = 1;
 
-        // 쿼리 매개변수에서 데이터 읽기
-        function getQueryParams() {
-            var params = new URLSearchParams(window.location.search);
-            var movieName = params.get("movieName");
-            var genre = params.get("genre");
-            var review = params.get("review");
+        function addMovieToTable(movieName, genre, review) {
+            var table = document.querySelector(".table tbody");
+            var newRow = table.insertRow();
 
-            if (movieName && genre && review) {
-                var table = document.querySelector(".table tbody");
-                var newRow = table.insertRow();
+            // 각 셀에 데이터를 추가합니다.
+            newRow.insertCell(0).innerText = movieCounter;
+            newRow.insertCell(1).innerText = movieName;
+            newRow.insertCell(2).innerText = genre;
+            newRow.insertCell(3).innerText = review;
 
-                // 각 셀에 데이터를 추가합니다.
-                newRow.insertCell(0).innerText = movieCounter;
-                newRow.insertCell(1).innerText = movieName;
-                newRow.insertCell(2).innerText = genre;
-                newRow.insertCell(3).innerText = review;
+            // 동작 버튼을 추가합니다.
+            var actionCell = newRow.insertCell(4);
+            actionCell.innerHTML = `
+                <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+            `;
 
-                // 동작 버튼을 추가합니다.
-                var actionCell = newRow.insertCell(4);
-                actionCell.innerHTML = `
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-                `;
-
-                movieCounter++;
-
-                // URL에서 쿼리 매개변수 삭제 (옵션)
-                var newUrl = window.location.href.substring(0, window.location.href.indexOf("?"));
-                window.history.replaceState({}, document.title, newUrl);
-            }
+            movieCounter++;
         }
-
-        // 페이지 로드 시 쿼리 매개변수 확인
-        window.onload = getQueryParams;
 
         function deleteMovie(button) {
             if (confirm("영화를 삭제하시겠습니까?")) {
@@ -82,4 +67,5 @@
             }
         }
     </script>
-</body
+</body>
+</html>
