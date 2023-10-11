@@ -52,7 +52,12 @@
         var queryParams = `?movieName=${encodeURIComponent(movieName)}&genre=${encodeURIComponent(genre)}&review=${encodeURIComponent(review)}`;
         
         // index.html 페이지로 이동하면서 쿼리 매개변수를 전달
-        window.location.href = 'index.html' + queryParams;
+        window.opener.addMovieToTable(movieName, genre, review);
+
+        // 입력 폼을 초기화합니다.
+        document.getElementById("add-movie-name").value = "";
+        document.getElementById("add-genre").value = "";
+        document.getElementById("add-review").value = "";
     }
 </script>
 
