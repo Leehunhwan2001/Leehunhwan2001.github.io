@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>View Movie</title>
+    <link rel="stylesheet" href="formal.css">
+    <link rel="stylesheet" type="text/css" href="my.css" media="screen and (max-width: 768px)">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">영화리스트</a>
+</nav>
+
+<main role="main" class="container">
+    <h2>Movie Details</h2>
+    <table class="table table-striped table-sm">
+        <tr>
+            <th>영화 이름</th>
+            <td>기존 영화 이름</td>
+        </tr>
+        <tr>
+            <th>장르</th>
+            <td>기존 장르</td>
+        </tr>
+        <tr>
+            <th>한줄평</th>
+            <td>기존 한줄평</td>
+        </tr>
+    </table>
+    <button onclick="location.href='edit.html'" class="btn btn-secondary">Edit</button>
+    <button onclick="confirmDelete()" class="btn btn-danger">Delete</button>
+</main>
+
+<script>
+    function confirmDelete() {
+        var confirmation = confirm("영화 정보를 삭제할까요?");
+        if (confirmation) {
+            // Implement deletion logic here. Typically involves contacting a server to delete a record.
+            alert("영화 정보가 삭제되었습니다.");
+        }
+    }
+</script>
+
+</body>
+
+</html>
