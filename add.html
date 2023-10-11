@@ -32,15 +32,11 @@
                 <td><input type="text" id="add-review" name="review"></td>
             </tr>
         </table>
-        <button type="button" class="btn btn-primary" onclick="testAlert()">추가</button>
+        <button type="submit" class="btn btn-primary">추가</button>
     </form>
 </main>
 
 <script>
-    function testAlert() {
-        alert("영화가 추가됩니다.");
-    }
-
     function addNewMovie() {
         var movieName = document.getElementById("add-movie-name").value;
         var genre = document.getElementById("add-genre").value;
