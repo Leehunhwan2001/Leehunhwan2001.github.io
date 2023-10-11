@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Edit Movie</title>
+    <link rel="stylesheet" href="formal.css">
+    <link rel="stylesheet" type="text/css" href="my.css" media="screen and (max-width: 768px)">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">영화리스트</a>
+</nav>
+
+<main role="main" class="container">
+    <h2>Edit Movie</h2>
+    <form onsubmit="event.preventDefault(); editMovie();">
+        <table class="table table-borderless">
+            <tr>
+                <td><label for="edit-movie-name">영화 이름:</label></td>
+                <td><input type="text" id="edit-movie-name" name="movieName" value="기존 영화 이름" required></td>
+            </tr>
+            <tr>
+                <td><label for="edit-genre">장르:</label></td>
+                <td><input type="text" id="edit-genre" name="genre" value="기존 장르" required></td>
+            </tr>
+            <tr>
+                <td><label for="edit-review">한줄평:</label></td>
+                <td><input type="text" id="edit-review" name="review" value="기존 한줄평"></td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary">Update</button>
+    </form>
+</main>
+
+<script>
+    function editMovie() {
+        var movieName = document.getElementById("edit-movie-name").value;
+        var genre = document.getElementById("edit-genre").value;
+        var review = document.getElementById("edit-review").value;
+
+        // Add your validation checks here
+        if (movieName === "" || genre === "") {
+            alert("영화 이름과 장르는 필수 필드입니다.");
+            return;
+        }
+
+        var confirmation = confirm("영화 정보를 수정하시겠습니까?");
+        if (confirmation) {
+            // Implement editing logic here. Typically this involves sending updated data to a server to store in a database.
+            alert("영화 정보가 성공적으로 수정되었습니다.");
+        }
+    }
+</script>
+
+</body>
+
+</html>
