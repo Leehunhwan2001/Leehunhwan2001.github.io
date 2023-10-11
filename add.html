@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Add New Movie</title>
+    <link rel="stylesheet" href="formal.css">
+    <link rel="stylesheet" type="text/css" href="my.css" media="screen and (max-width: 768px)">
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="index.html">영화리스트</a>
+</nav>
+
+<main role="main" class="container">
+    <h2>Add New Movie</h2>
+    <form onsubmit="event.preventDefault(); addNewMovie();">
+        <table class="table table-borderless">
+            <tr>
+                <td><label for="add-movie-name">영화 이름:</label></td>
+                <td><input type="text" id="add-movie-name" name="movieName" required></td>
+            </tr>
+            <tr>
+                <td><label for="add-genre">장르:</label></td>
+                <td><input type="text" id="add-genre" name="genre" required></td>
+            </tr>
+            <tr>
+                <td><label for="add-review">한줄평:</label></td>
+                <td><input type="text" id="add-review" name="review"></td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-primary" onclick="testAlert()">추가</button>
+    </form>
+</main>
+
+<script>
+    function testAlert() {
+        alert("영화가 추가됩니다.");
+    }
+
+    function addNewMovie() {
+        var movieName = document.getElementById("add-movie-name").value;
+        var genre = document.getElementById("add-genre").value;
+        var review = document.getElementById("add-review").value;
+
+        // Validation checks
+        if (movieName === "" || genre === "") {
+            alert("영화 이름과 장르는 필수 필드입니다.");
+            return;
+        }
+
+        // 이 데이터를 실제 시나리오에서는 서버로 전송하여 데이터베이스에 저장할 수 있습니다.
+        // 서버 요청을 보내는 예시는 다음과 같습니다.
+        /*
+        fetch('/api/add-movie', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ movieName, genre, review })
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("영화가 성공적으로 추가되었습니다.");
+        })
+        .catch(error => {
+            alert("영화 추가 중 오류가 발생했습니다.");
+        });
+        */
+    }
+</script>
+
+</body>
+
+</html>
