@@ -17,7 +17,7 @@
 
 <main role="main" class="container">
     <h2>Add New Movie</h2>
-    <form>
+    <form onsubmit="event.preventDefault(); addNewMovie();">
         <table class="table table-borderless">
             <tr>
                 <td><label for="add-movie-name">영화 이름:</label></td>
@@ -32,7 +32,7 @@
                 <td><input type="text" id="add-review" name="review"></td>
             </tr>
         </table>
-        <button type="submit" class="btn btn-primary" onclick="addNewMovie()">추가</button>
+        <button type="submit" class="btn btn-primary">추가</button>
     </form>
 </main>
 
@@ -48,9 +48,14 @@
             return;
         }
 
-        // 쿼리 매개변수로 데이터를 index.html로 전달
-        var queryParams = `?movieName=${encodeURIComponent(movieName)}&genre=${encodeURIComponent(genre)}&review=${encodeURIComponent(review)}`;
-        window.location.href = 'index.html' + queryParams;
+        // 새로운 영화를 추가하는 함수 호출
+        window.opener.addMovieToTable(movieName, genre, review);
+
+        // 입력 폼을 초기화합니다.
+       
+document.getElementById("add-movie-name").value = "";
+        document.getElementById("add-genre").value = "";
+        document.getElementById("add-review").value = "";
     }
 </script>
 
