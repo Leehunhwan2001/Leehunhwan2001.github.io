@@ -38,9 +38,13 @@
             var editedReview = document.getElementById("edit-review").value;
 
             if (editedMovieName && editedGenre) {
-                // 수정된 정보를 index.html로 전달
-                var editUrl = 'index.html?movieName=' + encodeURIComponent(editedMovieName) + '&genre=' + encodeURIComponent(editedGenre) + '&review=' + encodeURIComponent(editedReview);
-                window.location.href = editUrl;
+                // 사용자 확인 메시지 표시
+                var confirmation = confirm("영화 정보를 저장할까요?");
+                if (confirmation) {
+                    // 수정된 정보를 index.html로 전달
+                    var editUrl = 'index.html?movieName=' + encodeURIComponent(editedMovieName) + '&genre=' + encodeURIComponent(editedGenre) + '&review=' + encodeURIComponent(editedReview);
+                    window.location.href = editUrl;
+                }
             } else {
                 alert("영화 이름과 장르를 입력하세요.");
             }
