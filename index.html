@@ -31,10 +31,35 @@
         </thead>
         <tbody>
             <!-- 여기에 영화 정보가 추가될 것입니다. -->
+            <!-- 예시 게시물 1 -->
+            <tr>
+                <td>1</td>
+                <td>영화 1</td>
+                <td>액션</td>
+                <td>스릴러</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+                </td>
+            </tr>
+
+            <!-- 예시 게시물 2 -->
+            <tr>
+                <td>2</td>
+                <td>영화 2</td>
+                <td>코미디</td>
+                <td>웃음 폭탄</td>
+                <td>
+                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+                </td>
+            </tr>
         </tbody>
     </table>
     <script>
-        var movieCounter = 1;
+        var movieCounter = 3; // 기존 게시물 2개에 이어서 시작합니다.
 
         function addMovieToTable(movieName, genre, review) {
             var table = document.querySelector(".table tbody");
