@@ -48,11 +48,31 @@
             return;
         }
 
-        // 데이터를 쿼리 문자열로 인코딩
-        var queryParams = `?movieName=${encodeURIComponent(movieName)}&genre=${encodeURIComponent(genre)}&review=${encodeURIComponent(review)}`;
+        // 데이터를 새로운 행으로 추가
+        var table = window.opener.document.querySelector(".table tbody");
+        var newRow = table.insertRow();
 
-        // index.html 페이지로 이동하면서 쿼리 매개변수를 전달
-        window.location.href = 'index.html' + queryParams;
+        // 각 셀에 데이터를 추가합니다.
+        var cellCounter = newRow.insertCell(0);
+        var cellName = newRow.insertCell(1);
+        var cellGenre = newRow.insertCell(2);
+        var cellReview = newRow.insertCell(3);
+        var cellAction = newRow.insertCell(4);
+
+        cellCounter.innerText = window.opener.movieCounter++;
+        cellName.innerText = movieName;
+        cellGenre.innerText = genre;
+        cellReview.innerText = review;
+
+        // 동작 버튼을 추가합니다.
+        cellAction.innerHTML = `
+            <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+        `;
+
+        // 입력 폼을 초기화합니다.
+        document.getElementById("add-movie-name").value = "";
+        document.getElementById("add-genre").value = "";
+        document.getElementById("add-review").value = "";
     }
 </script>
 
