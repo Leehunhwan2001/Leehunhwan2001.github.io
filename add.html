@@ -35,6 +35,9 @@
             movies.push({ movieName: movieName, genre: genre, review: review });
             localStorage.setItem("movies", JSON.stringify(movies));
 
+            // "게시물이 추가됩니다" 알림 메시지 표시
+            alert("게시물이 추가됩니다");
+
             // index.html로 돌아가기
             location.href = 'index.html';
         }
