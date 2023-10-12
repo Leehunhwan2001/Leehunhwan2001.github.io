@@ -48,26 +48,17 @@
             return;
         }
 
-        // 데이터를 새로운 행으로 추가
-        var table = window.opener.document.querySelector(".table tbody");
-        var newRow = table.insertRow();
+        // 데이터를 객체로 저장
+        var movieData = {
+            movieName: movieName,
+            genre: genre,
+            review: review
+        };
 
-        // 각 셀에 데이터를 추가합니다.
-        var cellCounter = newRow.insertCell(0);
-        var cellName = newRow.insertCell(1);
-        var cellGenre = newRow.insertCell(2);
-        var cellReview = newRow.insertCell(3);
-        var cellAction = newRow.insertCell(4);
-
-        cellCounter.innerText = window.opener.movieCounter++;
-        cellName.innerText = movieName;
-        cellGenre.innerText = genre;
-        cellReview.innerText = review;
-
-        // 동작 버튼을 추가합니다.
-        cellAction.innerHTML = `
-            <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-        `;
+        // 이 데이터를 로컬 스토리지에 저장
+        var movies = JSON.parse(localStorage.getItem("movies")) || [];
+        movies.push(movieData);
+        localStorage.setItem("movies", JSON.stringify(movies));
 
         // 입력 폼을 초기화합니다.
         document.getElementById("add-movie-name").value = "";
