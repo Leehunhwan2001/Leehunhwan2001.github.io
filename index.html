@@ -32,10 +32,59 @@
         </thead>
         <tbody>
             <!-- 여기에 영화 정보가 추가될 것입니다. -->
+            <!-- 여기에 영화 정보가 추가될 것입니다. -->
+<tr>
+    <td>1</td>
+    <td>영화 1</td>
+    <td>액션</td>
+    <td>스릴러</td>
+    <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+        <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+        <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+    </td>
+</tr>
+
+<tr>
+    <td>2</td>
+    <td>영화 2</td>
+    <td>로맨스</td>
+    <td>감동적인 이야기</td>
+    <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+        <button class "btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+        <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+    </td>
+</tr>
+
+<tr>
+    <td>3</td>
+    <td>영화 3</td>
+    <td>코미디</td>
+    <td>웃음 폭탄</td>
+    <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+        <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+        <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+    </td>
+</tr>
+
+<tr>
+    <td>4</td>
+    <td>영화 4</td>
+    <td>드라마</td>
+    <td>감동적인 스토리</td>
+    <td>
+        <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
+        <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
+        <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
+    </td>
+</tr>
+
         </tbody>
     </table>
     <script>
-        var movieCounter = 1;
+        var movieCounter = 5;
 
         function addMovieToTable(movieName, genre, review) {
             var table = document.querySelector(".table tbody");
