@@ -1,100 +1,27 @@
-/* 공통 스타일 */
-body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
+/* my.css */
+
+/* 데스크톱 스타일 */
+@media (min-width: 768px) {
+    /* 데스크톱 전용 스타일을 여기에 작성합니다. */
+    body {
+        background-color: #f0f0f0;
+    }
+
+    /* 테이블 스타일 예시 */
+    table {
+        width: 100%;
+    }
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
+/* 모바일 스타일 */
+@media (max-width: 767px) {
+    /* 모바일 전용 스타일을 여기에 작성합니다. */
+    body {
+        background-color: #e0e0e0;
+    }
 
-h1 {
-    text-align: center;
-    color: #333;
-}
-
-ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-li {
-    margin: 10px 0;
-}
-
-/* 목록 페이지 스타일 */
-ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    display: block;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: background-color 0.2s, color 0.2s;
-}
-
-ul li a:hover {
-    background-color: #333;
-    color: #fff;
-}
-
-/* 추가 및 수정 페이지 스타일 */
-form {
-    background-color: #fff;
-    border: 1px solid #e0e0e0;
-    border-radius: 5px;
-    padding: 20px;
-}
-
-input[type="text"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button[type="submit"] {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-/* Confirm 및 Alert 스타일 */
-.confirm-box, .alert-box {
-    width: 300px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    text-align: center;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.confirm-box button, .alert-box button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.confirm-box button:hover, .alert-box button:hover {
-    background-color: #555;
+    /* 테이블 스타일 예시 */
+    table {
+        width: 100%;
+    }
 }
