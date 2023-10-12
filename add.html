@@ -1,72 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Add New Movie</title>
-    <link rel="stylesheet" href="formal.css">
-    <link rel="stylesheet" type="text/css" href="my.css" media="screen and (max-width: 768px)">
+    <title>영화 추가</title>
 </head>
-
 <body>
-
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" href="index.html">영화리스트</a>
-</nav>
-
-<main role="main" class="container">
-    <h2>Add New Movie</h2>
-    <form onsubmit="event.preventDefault(); addNewMovie();">
-        <table class="table table-borderless">
-            <tr>
-                <td><label for="add-movie-name">영화 이름:</label></td>
-                <td><input type="text" id="add-movie-name" name="movieName" required></td>
-            </tr>
-            <tr>
-                <td><label for="add-genre">장르:</label></td>
-                <td><input type="text" id="add-genre" name="genre" required></td>
-            </tr>
-            <tr>
-                <td><label for="add-review">한줄평:</label></td>
-                <td><input type="text" id="add-review" name="review"></td>
-            </tr>
-        </table>
-        <button type="submit" class="btn btn-primary">추가</button>
+    <h1>영화 추가</h1>
+    <form>
+        <label for="movie-name">영화 이름:</label>
+        <input type="text" id="movie-name">
+        <br>
+        <label for="genre">장르:</label>
+        <input type="text" id="genre">
+        <br>
+        <label for="review">한줄평:</label>
+        <input type="text" id="review">
+        <br>
+        <button id="add-movie" onclick="addNewMovie()">추가</button>
     </form>
-</main>
+    <script>
+        function addNewMovie() {
+            var movieName = document.getElementById("movie-name").value;
+            var genre = document.getElementById("genre").value;
+            var review = document.getElementById("review").value;
 
-<script>
-    function addNewMovie() {
-        var movieName = document.getElementById("add-movie-name").value;
-        var genre = document.getElementById("add-genre").value;
-        var review = document.getElementById("add-review").value;
+            if (!movieName || !genre) {
+                alert("영화 이름과 장르는 필수 필드입니다.");
+                return;
+            }
 
-        // Validation checks
-        if (movieName === "" || genre === "") {
-            alert("영화 이름과 장르는 필수 필드입니다.");
-            return;
+            // 저장된 영화 목록 불러오기
+            var movies = JSON.parse(localStorage.getItem("movies")) || [];
+
+            // 새로운 영화 정보 저장
+            movies.push({ movieName: movieName, genre: genre, review: review });
+            localStorage.setItem("movies", JSON.stringify(movies));
+
+            // index.html로 돌아가기
+            location.href = 'index.html';
         }
-
-        // 데이터를 객체로 저장
-        var movieData = {
-            movieName: movieName,
-            genre: genre,
-            review: review
-        };
-
-        // 이 데이터를 로컬 스토리지에 저장
-        var movies = JSON.parse(localStorage.getItem("movies")) || [];
-        movies.push(movieData);
-        localStorage.setItem("movies", JSON.stringify(movies));
-
-        // 입력 폼을 초기화합니다.
-        document.getElementById("add-movie-name").value = "";
-        document.getElementById("add-genre").value = "";
-        document.getElementById("add-review").value = "";
-    }
-</script>
-
+    </script>
 </body>
-
 </html>
