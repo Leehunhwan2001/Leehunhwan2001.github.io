@@ -13,10 +13,11 @@
         <label for="genre">장르:</label>
         <input type="text" id="genre" placeholder="장르">
         <br>
-        <label for="review">한줄평:</label>
+        <label for "review">한줄평:</label>
         <input type="text" id="review" placeholder="한줄평">
         <br>
         <button id="add-movie">영화 추가</button>
+        <button id="add-page">Add</button> <!-- "Add" 버튼 추가 -->
     </div>
     <!-- 테이블 -->
     <table class="table">
@@ -31,58 +32,10 @@
         </thead>
         <tbody>
             <!-- 여기에 영화 정보가 추가될 것입니다. -->
-           
-            <tr>
-                <td>1</td>
-                <td>범죄도시</td>
-                <td>액션</td>
-                <td>황정민의 명연기</td>
-                <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
-                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
-                </td>
-            </tr>
-
-            <tr>
-                <td>2</td>
-                <td>집으로</td>
-                <td>다큐</td>
-                <td>눈물과 웃음의 조화</td>
-                <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
-                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
-                </td>
-            </tr>
-
-             <tr>
-                <td>3</td>
-                <td>해리포터</td>
-                <td>판타지</td>
-                <td>꿈 같은 두시간!</td>
-                <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
-                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
-                </td>
-            </tr>
-
-             <tr>
-                <td>4</td>
-                <td>사랑</td>
-                <td>로맨스</td>
-                <td>너무 사랑하는 영화</td>
-                <td>
-                    <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
-                    <button class="btn btn-primary btn-sm" onclick="editMovie(this)">Edit</button>
-                    <button class="btn btn-primary btn-sm" onclick="viewMovie(this)">View</button>
-                </td>
-            </tr>
         </tbody>
     </table>
     <script>
-        var movieCounter = 5; 
+        var movieCounter = 1;
 
         function addMovieToTable(movieName, genre, review) {
             var table = document.querySelector(".table tbody");
@@ -133,6 +86,10 @@
             var viewUrl = 'view.html?movieName=' + encodeURIComponent(movieName) + '&genre=' + encodeURIComponent(genre) + '&review=' + encodeURIComponent(review);
             window.location.href = viewUrl;
         }
+
+        document.getElementById("add-page").addEventListener("click", function () {
+            location.href = 'add.html'; // "Add" 버튼을 클릭하면 "add.html" 페이지로 이동
+        });
 
         document.getElementById("add-movie").addEventListener("click", function () {
             var movieName = document.getElementById("movie-name").value;
