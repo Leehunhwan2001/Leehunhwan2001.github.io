@@ -19,7 +19,7 @@
         <label for="review">한줄평:</label>
         <input type="text" id="review" placeholder="한줄평">
         <br>
-        <button id="add-movie" onclick="location.href='add.html'">영화 추가</button>
+        <button id="add-movie">영화 추가</button>
     </div>
 
     <!-- 테이블 -->
@@ -39,14 +39,22 @@
     </table>
 
     <script>
-        var movieCounter = 1;
+        // 페이지 로드 시 저장된 데이터 검색하여 테이블에 추가
+        window.onload = function () {
+            var movies = JSON.parse(localStorage.getItem("movies")) || [];
+            var table = document.querySelector(".table tbody");
+            for (var i = 0; i < movies.length; i++) {
+                var movieData = movies[i];
+                addMovieToTable(movieData.movieName, movieData.genre, movieData.review);
+            }
+        };
 
         function addMovieToTable(movieName, genre, review) {
             var table = document.querySelector(".table tbody");
             var newRow = table.insertRow();
 
             // 각 셀에 데이터를 추가합니다.
-            newRow.insertCell(0).innerText = movieCounter;
+            newRow.insertCell(0).innerText = movieCounter++;
             newRow.insertCell(1).innerText = movieName;
             newRow.insertCell(2).innerText = genre;
             newRow.insertCell(3).innerText = review;
@@ -56,8 +64,6 @@
             actionCell.innerHTML = `
                 <button class="btn btn-danger btn-sm" onclick="deleteMovie(this)">Delete</button>
             `;
-
-            movieCounter++;
         }
 
         function deleteMovie(button) {
